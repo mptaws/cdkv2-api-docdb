@@ -1,0 +1,2204 @@
+{
+  "Resources": {
+    "DocDbVpc838DFB07": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.3.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Resource"
+      }
+    },
+    "DocDbVpcdbSubnet1Subnet4FBF3E63": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.3.0.0/24",
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "db"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          },
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Subnet"
+      }
+    },
+    "DocDbVpcdbSubnet1RouteTable90C5B944": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTable"
+      }
+    },
+    "DocDbVpcdbSubnet1RouteTableAssociation9B33F1DF": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
+        },
+        "SubnetId": {
+          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTableAssociation"
+      }
+    },
+    "DocDbVpcdbSubnet1DefaultRoute23891593": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/DefaultRoute"
+      }
+    },
+    "DocDbVpcdbSubnet2Subnet9F482FAD": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.3.1.0/24",
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "db"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          },
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Subnet"
+      }
+    },
+    "DocDbVpcdbSubnet2RouteTable97608A44": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTable"
+      }
+    },
+    "DocDbVpcdbSubnet2RouteTableAssociationC7DAEC62": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
+        },
+        "SubnetId": {
+          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTableAssociation"
+      }
+    },
+    "DocDbVpcdbSubnet2DefaultRoute989C67C6": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/DefaultRoute"
+      }
+    },
+    "DocDbVpcdmzSubnet1Subnet51657834": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.3.2.0/24",
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "dmz"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          },
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Subnet"
+      }
+    },
+    "DocDbVpcdmzSubnet1RouteTableF95FC829": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTable"
+      }
+    },
+    "DocDbVpcdmzSubnet1RouteTableAssociationC7C9E77E": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+        },
+        "SubnetId": {
+          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTableAssociation"
+      }
+    },
+    "DocDbVpcdmzSubnet1DefaultRoute16DA0ECA": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "DocDbVpcIGWD853B964"
+        }
+      },
+      "DependsOn": [
+        "DocDbVpcVPCGW09B5DD58"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/DefaultRoute"
+      }
+    },
+    "DocDbVpcdmzSubnet1EIP2E95BC63": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/EIP"
+      }
+    },
+    "DocDbVpcdmzSubnet1NATGateway1D2CC063": {
+      "Type": "AWS::EC2::NatGateway",
+      "Properties": {
+        "SubnetId": {
+          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+        },
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "DocDbVpcdmzSubnet1EIP2E95BC63",
+            "AllocationId"
+          ]
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/NATGateway"
+      }
+    },
+    "DocDbVpcdmzSubnet2SubnetDF5353C9": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.3.3.0/24",
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "dmz"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          },
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Subnet"
+      }
+    },
+    "DocDbVpcdmzSubnet2RouteTableC4E1D0A1": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTable"
+      }
+    },
+    "DocDbVpcdmzSubnet2RouteTableAssociation29D71FFE": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+        },
+        "SubnetId": {
+          "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTableAssociation"
+      }
+    },
+    "DocDbVpcdmzSubnet2DefaultRouteF750075F": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "DocDbVpcIGWD853B964"
+        }
+      },
+      "DependsOn": [
+        "DocDbVpcVPCGW09B5DD58"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/DefaultRoute"
+      }
+    },
+    "DocDbVpcIGWD853B964": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/IGW"
+      }
+    },
+    "DocDbVpcVPCGW09B5DD58": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "InternetGatewayId": {
+          "Ref": "DocDbVpcIGWD853B964"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/VPCGW"
+      }
+    },
+    "docdbDatabaseTestSubnets0B1BD4F4": {
+      "Type": "AWS::DocDB::DBSubnetGroup",
+      "Properties": {
+        "DBSubnetGroupDescription": "Subnets for docdbDatabaseTest database",
+        "SubnetIds": [
+          {
+            "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+          },
+          {
+            "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Subnets"
+      }
+    },
+    "docdbDatabaseTestSecurityGroupE609EEC6": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "DocumentDB security group",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/SecurityGroup/Resource"
+      }
+    },
+    "docdbDatabaseTestSecurityGroupfrom00000IndirectPort0DA4A6A8": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "IpProtocol": "tcp",
+        "CidrIp": "0.0.0.0/0",
+        "Description": "too open for now",
+        "FromPort": {
+          "Fn::GetAtt": [
+            "docdbDatabaseTestB8EFCB97",
+            "Port"
+          ]
+        },
+        "GroupId": {
+          "Fn::GetAtt": [
+            "docdbDatabaseTestSecurityGroupE609EEC6",
+            "GroupId"
+          ]
+        },
+        "ToPort": {
+          "Fn::GetAtt": [
+            "docdbDatabaseTestB8EFCB97",
+            "Port"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/SecurityGroup/from 0.0.0.0_0:{IndirectPort}"
+      }
+    },
+    "docdbDatabaseTestSecret71ED80F6": {
+      "Type": "AWS::SecretsManager::Secret",
+      "Properties": {
+        "Description": {
+          "Fn::Join": [
+            "",
+            [
+              "Generated by the CDK for stack: ",
+              {
+                "Ref": "AWS::StackName"
+              }
+            ]
+          ]
+        },
+        "GenerateSecretString": {
+          "ExcludeCharacters": "\"@/:",
+          "GenerateStringKey": "password",
+          "PasswordLength": 41,
+          "SecretStringTemplate": "{\"username\":\"myuser\"}"
+        },
+        "Name": "/myapp/mydocdb/masteruser"
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret/Resource"
+      }
+    },
+    "docdbDatabaseTestSecretAttachment705737FB": {
+      "Type": "AWS::SecretsManager::SecretTargetAttachment",
+      "Properties": {
+        "SecretId": {
+          "Ref": "docdbDatabaseTestSecret71ED80F6"
+        },
+        "TargetId": {
+          "Ref": "docdbDatabaseTestB8EFCB97"
+        },
+        "TargetType": "AWS::DocDB::DBCluster"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret/Attachment/Resource"
+      }
+    },
+    "docdbDatabaseTestB8EFCB97": {
+      "Type": "AWS::DocDB::DBCluster",
+      "Properties": {
+        "MasterUsername": {
+          "Fn::Join": [
+            "",
+            [
+              "{{resolve:secretsmanager:",
+              {
+                "Ref": "docdbDatabaseTestSecret71ED80F6"
+              },
+              ":SecretString:username::}}"
+            ]
+          ]
+        },
+        "MasterUserPassword": {
+          "Fn::Join": [
+            "",
+            [
+              "{{resolve:secretsmanager:",
+              {
+                "Ref": "docdbDatabaseTestSecret71ED80F6"
+              },
+              ":SecretString:password::}}"
+            ]
+          ]
+        },
+        "DBSubnetGroupName": {
+          "Ref": "docdbDatabaseTestSubnets0B1BD4F4"
+        },
+        "DeletionProtection": false,
+        "StorageEncrypted": true,
+        "VpcSecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "docdbDatabaseTestSecurityGroupE609EEC6",
+              "GroupId"
+            ]
+          }
+        ]
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Resource"
+      }
+    },
+    "docdbDatabaseTestInstance115B581C6": {
+      "Type": "AWS::DocDB::DBInstance",
+      "Properties": {
+        "DBClusterIdentifier": {
+          "Ref": "docdbDatabaseTestB8EFCB97"
+        },
+        "DBInstanceClass": "db.r5.large"
+      },
+      "DependsOn": [
+        "DocDbVpcdmzSubnet1DefaultRoute16DA0ECA",
+        "DocDbVpcdmzSubnet2DefaultRouteF750075F"
+      ],
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Instance1"
+      }
+    },
+    "dnCrudIAMRole26E07972": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AmazonDocDBFullAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/SecretsManagerReadWrite"
+              ]
+            ]
+          }
+        ],
+        "RoleName": "dnCrudIAMRole"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/dnCrudIAMRole/Resource"
+      }
+    },
+    "certLayerB3A9417F": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "Content": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "12a5d1fd95e14c9840036f726da6a4142a461df455f443330e40b9c2d180f478.zip"
+        },
+        "CompatibleRuntimes": [
+          "dotnetcore3.1"
+        ],
+        "Description": "Dependency Layer for Certificates",
+        "LayerName": "certLayer"
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/certLayer/Resource",
+        "aws:asset:path": "asset.12a5d1fd95e14c9840036f726da6a4142a461df455f443330e40b9c2d180f478",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Content"
+      }
+    },
+    "createOneLambdaSecurityGroup8DCEC501": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackcreateOneLambda27B3A9FA",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/createOneLambda/SecurityGroup/Resource"
+      }
+    },
+    "createOneLambdaBCAB9E43": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "12a1db1eec700e5baa98da5977e213668b454bfc4df69fdc854c0e10d495c229.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "dnCrudIAMRole26E07972",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "HOME": "/tmp",
+            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "REGION": "us-west-2"
+          }
+        },
+        "Handler": "createOneLambda::dnCrud.Function::FunctionHandler",
+        "Layers": [
+          {
+            "Ref": "certLayerB3A9417F"
+          }
+        ],
+        "Runtime": "dotnetcore3.1",
+        "Timeout": 30,
+        "VpcConfig": {
+          "SecurityGroupIds": [
+            {
+              "Fn::GetAtt": [
+                "createOneLambdaSecurityGroup8DCEC501",
+                "GroupId"
+              ]
+            }
+          ],
+          "SubnetIds": [
+            {
+              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+            },
+            {
+              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "dnCrudIAMRole26E07972"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/createOneLambda/Resource",
+        "aws:asset:path": "asset.12a1db1eec700e5baa98da5977e213668b454bfc4df69fdc854c0e10d495c229",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "getAllLambdaSecurityGroup6C82FB02": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackgetAllLambdaE20F6A54",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/getAllLambda/SecurityGroup/Resource"
+      }
+    },
+    "getAllLambda83527A6D": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "f29a5a25a10fa7f05237ee7165f6e217b3059c11d6bb2f085262d406deeb3c9f.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "dnCrudIAMRole26E07972",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "HOME": "/tmp",
+            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "REGION": "us-west-2"
+          }
+        },
+        "Handler": "getAllLambda::dnCrud.Function::FunctionHandler",
+        "Layers": [
+          {
+            "Ref": "certLayerB3A9417F"
+          }
+        ],
+        "Runtime": "dotnetcore3.1",
+        "Timeout": 30,
+        "VpcConfig": {
+          "SecurityGroupIds": [
+            {
+              "Fn::GetAtt": [
+                "getAllLambdaSecurityGroup6C82FB02",
+                "GroupId"
+              ]
+            }
+          ],
+          "SubnetIds": [
+            {
+              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+            },
+            {
+              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "dnCrudIAMRole26E07972"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/getAllLambda/Resource",
+        "aws:asset:path": "asset.f29a5a25a10fa7f05237ee7165f6e217b3059c11d6bb2f085262d406deeb3c9f",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "getOneLambdaSecurityGroupD92E4C7C": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackgetOneLambda8845EA5E",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/getOneLambda/SecurityGroup/Resource"
+      }
+    },
+    "getOneLambda8B5784F4": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "584e68c7241168ff9237fde9306385a390edc6168bf097e5be5d1621276e4130.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "dnCrudIAMRole26E07972",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "HOME": "/tmp",
+            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "REGION": "us-west-2"
+          }
+        },
+        "Handler": "getOneLambda::dnCrud.Function::FunctionHandler",
+        "Layers": [
+          {
+            "Ref": "certLayerB3A9417F"
+          }
+        ],
+        "Runtime": "dotnetcore3.1",
+        "Timeout": 30,
+        "VpcConfig": {
+          "SecurityGroupIds": [
+            {
+              "Fn::GetAtt": [
+                "getOneLambdaSecurityGroupD92E4C7C",
+                "GroupId"
+              ]
+            }
+          ],
+          "SubnetIds": [
+            {
+              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+            },
+            {
+              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "dnCrudIAMRole26E07972"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/getOneLambda/Resource",
+        "aws:asset:path": "asset.584e68c7241168ff9237fde9306385a390edc6168bf097e5be5d1621276e4130",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "updateOneLambdaSecurityGroupBDB279E2": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackupdateOneLambda80B99DAD",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/updateOneLambda/SecurityGroup/Resource"
+      }
+    },
+    "updateOneLambdaA6FE6E48": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "4cfc9d38d4ca18730a006b49c9029d685e5150fb78ffdbbbd31e09c85c6071d1.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "dnCrudIAMRole26E07972",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "HOME": "/tmp",
+            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "REGION": "us-west-2"
+          }
+        },
+        "Handler": "updateOneLambda::dnCrud.Function::FunctionHandler",
+        "Layers": [
+          {
+            "Ref": "certLayerB3A9417F"
+          }
+        ],
+        "Runtime": "dotnetcore3.1",
+        "Timeout": 30,
+        "VpcConfig": {
+          "SecurityGroupIds": [
+            {
+              "Fn::GetAtt": [
+                "updateOneLambdaSecurityGroupBDB279E2",
+                "GroupId"
+              ]
+            }
+          ],
+          "SubnetIds": [
+            {
+              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+            },
+            {
+              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "dnCrudIAMRole26E07972"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/updateOneLambda/Resource",
+        "aws:asset:path": "asset.4cfc9d38d4ca18730a006b49c9029d685e5150fb78ffdbbbd31e09c85c6071d1",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "deleteOneLambdaSecurityGroup99EA4036": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackdeleteOneLambdaE2610E88",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/deleteOneLambda/SecurityGroup/Resource"
+      }
+    },
+    "deleteOneLambdaA2A42A56": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "ecded74bdf2d7f065ec176207f1b639d9d3e5469c584fe77113f770b66de1ac0.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "dnCrudIAMRole26E07972",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "HOME": "/tmp",
+            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "REGION": "us-west-2"
+          }
+        },
+        "Handler": "deleteOneLambda::dnCrud.Function::FunctionHandler",
+        "Layers": [
+          {
+            "Ref": "certLayerB3A9417F"
+          }
+        ],
+        "Runtime": "dotnetcore3.1",
+        "Timeout": 30,
+        "VpcConfig": {
+          "SecurityGroupIds": [
+            {
+              "Fn::GetAtt": [
+                "deleteOneLambdaSecurityGroup99EA4036",
+                "GroupId"
+              ]
+            }
+          ],
+          "SubnetIds": [
+            {
+              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+            },
+            {
+              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "dnCrudIAMRole26E07972"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/deleteOneLambda/Resource",
+        "aws:asset:path": "asset.ecded74bdf2d7f065ec176207f1b639d9d3e5469c584fe77113f770b66de1ac0",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "crudapiF1394973": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Description": "API for access to CRUD Lambdas to DocumentDb",
+        "Name": "Serverless Crud Service"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Resource"
+      }
+    },
+    "crudapiCloudWatchRole3D6F08B8": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/CloudWatchRole/Resource"
+      }
+    },
+    "crudapiAccount69C5E762": {
+      "Type": "AWS::ApiGateway::Account",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "crudapiCloudWatchRole3D6F08B8",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "crudapiF1394973"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Account"
+      }
+    },
+    "crudapiDeploymentB0D616B1d9ab60af844487ad11558fdf94084a0a": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "Description": "Automatically created by the RestApi construct"
+      },
+      "DependsOn": [
+        "crudapiidDELETEA35187DF",
+        "crudapiidGET1FCD1E1E",
+        "crudapiidOPTIONS12BB4072",
+        "crudapiidPATCHC44E0DA6",
+        "crudapiidEEFB7698",
+        "crudapiGET58B67388",
+        "crudapiOPTIONS495268A9",
+        "crudapiPOSTE150591A",
+        "crudapi51FEA0EB"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Deployment/Resource"
+      }
+    },
+    "crudapiDeploymentStageprod8084CAA8": {
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "DeploymentId": {
+          "Ref": "crudapiDeploymentB0D616B1d9ab60af844487ad11558fdf94084a0a"
+        },
+        "StageName": "prod"
+      },
+      "DependsOn": [
+        "crudapiAccount69C5E762"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/DeploymentStage.prod/Resource"
+      }
+    },
+    "crudapi51FEA0EB": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "crudapiF1394973",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "api",
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/Resource"
+      }
+    },
+    "crudapiPOSTApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAPOSTapi129F0D19": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "createOneLambdaBCAB9E43",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/",
+              {
+                "Ref": "crudapiDeploymentStageprod8084CAA8"
+              },
+              "/POST/api"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/POST/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api"
+      }
+    },
+    "crudapiPOSTApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAPOSTapi1A9A9C3D": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "createOneLambdaBCAB9E43",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/test-invoke-stage/POST/api"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/POST/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api"
+      }
+    },
+    "crudapiPOSTE150591A": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "ResourceId": {
+          "Ref": "crudapi51FEA0EB"
+        },
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "createOneLambdaBCAB9E43",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/POST/Resource"
+      }
+    },
+    "crudapiGETApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapiB033164C": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "getAllLambda83527A6D",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/",
+              {
+                "Ref": "crudapiDeploymentStageprod8084CAA8"
+              },
+              "/GET/api"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/GET/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api"
+      }
+    },
+    "crudapiGETApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapi742C2514": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "getAllLambda83527A6D",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/test-invoke-stage/GET/api"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/GET/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api"
+      }
+    },
+    "crudapiGET58B67388": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "crudapi51FEA0EB"
+        },
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "getAllLambda83527A6D",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/GET/Resource"
+      }
+    },
+    "crudapiOPTIONS495268A9": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "crudapi51FEA0EB"
+        },
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Credentials": "'false'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "PassthroughBehavior": "NEVER",
+          "RequestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Credentials": true,
+              "method.response.header.Access-Control-Allow-Origin": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/OPTIONS/Resource"
+      }
+    },
+    "crudapiidEEFB7698": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "crudapi51FEA0EB"
+        },
+        "PathPart": "{id}",
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/Resource"
+      }
+    },
+    "crudapiidGETApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapiidC6D74AB2": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "getOneLambda8B5784F4",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/",
+              {
+                "Ref": "crudapiDeploymentStageprod8084CAA8"
+              },
+              "/GET/api/*"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}"
+      }
+    },
+    "crudapiidGETApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapiid7B396096": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "getOneLambda8B5784F4",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/test-invoke-stage/GET/api/*"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}"
+      }
+    },
+    "crudapiidGET1FCD1E1E": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "crudapiidEEFB7698"
+        },
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "getOneLambda8B5784F4",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/Resource"
+      }
+    },
+    "crudapiidPATCHApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAPATCHapiidA86142C5": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "updateOneLambdaA6FE6E48",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/",
+              {
+                "Ref": "crudapiDeploymentStageprod8084CAA8"
+              },
+              "/PATCH/api/*"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}"
+      }
+    },
+    "crudapiidPATCHApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAPATCHapiid31918E0D": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "updateOneLambdaA6FE6E48",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/test-invoke-stage/PATCH/api/*"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}"
+      }
+    },
+    "crudapiidPATCHC44E0DA6": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "PATCH",
+        "ResourceId": {
+          "Ref": "crudapiidEEFB7698"
+        },
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "updateOneLambdaA6FE6E48",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/Resource"
+      }
+    },
+    "crudapiidDELETEApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBADELETEapiid1BFAC8D9": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "deleteOneLambdaA2A42A56",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/",
+              {
+                "Ref": "crudapiDeploymentStageprod8084CAA8"
+              },
+              "/DELETE/api/*"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}"
+      }
+    },
+    "crudapiidDELETEApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBADELETEapiidF8F0566A": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "deleteOneLambdaA2A42A56",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "crudapiF1394973"
+              },
+              "/test-invoke-stage/DELETE/api/*"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}"
+      }
+    },
+    "crudapiidDELETEA35187DF": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "DELETE",
+        "ResourceId": {
+          "Ref": "crudapiidEEFB7698"
+        },
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "deleteOneLambdaA2A42A56",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/Resource"
+      }
+    },
+    "crudapiidOPTIONS12BB4072": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "crudapiidEEFB7698"
+        },
+        "RestApiId": {
+          "Ref": "crudapiF1394973"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Credentials": "'false'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "PassthroughBehavior": "NEVER",
+          "RequestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Credentials": true,
+              "method.response.header.Access-Control-Allow-Origin": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/OPTIONS/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/31STW/bMAz9Lb0r2toV2K5OshUB9mEkRa4FLXOuGlsyRKpFYPi/j7KSOulhJz4+PZKPhO70N/35Bt5oYerDorWVHnYM5qCEehrQ3Olh3xu1+uv25UqVwb4C4y5WDjmRM9r6yPgIVYszP3MFkTcW2Hr3LlZlrFpr5hbfN2UKv4EfZMgbHFO2cYxBBBeUODllBYvX5w4dqx2aGCwfH4KP/WThv8TGNQGJRlV7U8vSa2CogHDVRpKBSb9eZmu5wVkgXUK2u15eiTeOGJzBUdEkoQ4cNBj0kGenqhweITTIF97fBR9fRmWh08PW56umOKoWuqoGPfyEI4Y9Bjod9Sr/EZ05X/sSlxg6S0kiPr88AZE41UUKkutlNAfkpeypoLdNvrIYQOKit5OHGRbG+Cj219i3/nje5CKTn9Tk7zABKfUxGJzan5NTz4x/IT/7OlEZjeOsmzymRtY1SfEnch/5qlzwyrva8rSe8zXqF/r0enuvb7/q+5sXsnYRxLHtUG9z/Ad/r/sVAAMAAA=="
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/CDKMetadata/Default"
+      },
+      "Condition": "CDKMetadataAvailable"
+    }
+  },
+  "Outputs": {
+    "crudapiEndpoint4B1269EE": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "crudapiF1394973"
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region"
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix"
+            },
+            "/",
+            {
+              "Ref": "crudapiDeploymentStageprod8084CAA8"
+            },
+            "/"
+          ]
+        ]
+      }
+    }
+  },
+  "Conditions": {
+    "CDKMetadataAvailable": {
+      "Fn::Or": [
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "af-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ca-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-northwest-1"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-3"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "me-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "sa-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-2"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-west-2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Type": "AWS::SSM::Parameter::Value<String>",
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+    }
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ],
+                  {
+                    "Ref": "BootstrapVersion"
+                  }
+                ]
+              }
+            ]
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+        }
+      ]
+    }
+  }
+}

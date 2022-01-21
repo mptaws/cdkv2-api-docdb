@@ -1,0 +1,2847 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.36"
+        }
+      },
+      "Cdkv2ApiDocdbStack": {
+        "id": "Cdkv2ApiDocdbStack",
+        "path": "Cdkv2ApiDocdbStack",
+        "children": {
+          "DocDbVpc": {
+            "id": "DocDbVpc",
+            "path": "Cdkv2ApiDocdbStack/DocDbVpc",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
+                  "aws:cdk:cloudformation:props": {
+                    "cidrBlock": "10.3.0.0/16",
+                    "enableDnsHostnames": true,
+                    "enableDnsSupport": true,
+                    "instanceTenancy": "default",
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "Cdkv2ApiDocdbStack/DocDbVpc"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPC",
+                  "version": "2.8.0"
+                }
+              },
+              "dbSubnet1": {
+                "id": "dbSubnet1",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.3.0.0/24",
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            0,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "db"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
+                        },
+                        "subnetId": {
+                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.8.0"
+                }
+              },
+              "dbSubnet2": {
+                "id": "dbSubnet2",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.3.1.0/24",
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            1,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "db"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
+                        },
+                        "subnetId": {
+                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.8.0"
+                }
+              },
+              "dmzSubnet1": {
+                "id": "dmzSubnet1",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.3.2.0/24",
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            0,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "dmz"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+                        },
+                        "subnetId": {
+                          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "DocDbVpcIGWD853B964"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnEIP",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "subnetId": {
+                          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+                        },
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "DocDbVpcdmzSubnet1EIP2E95BC63",
+                            "AllocationId"
+                          ]
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnNatGateway",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PublicSubnet",
+                  "version": "2.8.0"
+                }
+              },
+              "dmzSubnet2": {
+                "id": "dmzSubnet2",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.3.3.0/24",
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            1,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "dmz"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+                        },
+                        "subnetId": {
+                          "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "DocDbVpcIGWD853B964"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PublicSubnet",
+                  "version": "2.8.0"
+                }
+              },
+              "IGW": {
+                "id": "IGW",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/IGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
+                  "aws:cdk:cloudformation:props": {
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "Cdkv2ApiDocdbStack/DocDbVpc"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnInternetGateway",
+                  "version": "2.8.0"
+                }
+              },
+              "VPCGW": {
+                "id": "VPCGW",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/VPCGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
+                  "aws:cdk:cloudformation:props": {
+                    "vpcId": {
+                      "Ref": "DocDbVpc838DFB07"
+                    },
+                    "internetGatewayId": {
+                      "Ref": "DocDbVpcIGWD853B964"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPCGatewayAttachment",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.Vpc",
+              "version": "2.8.0"
+            }
+          },
+          "docdbDatabaseTest": {
+            "id": "docdbDatabaseTest",
+            "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest",
+            "children": {
+              "Subnets": {
+                "id": "Subnets",
+                "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Subnets",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DocDB::DBSubnetGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "dbSubnetGroupDescription": "Subnets for docdbDatabaseTest database",
+                    "subnetIds": [
+                      {
+                        "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+                      },
+                      {
+                        "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_docdb.CfnDBSubnetGroup",
+                  "version": "2.8.0"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "DocumentDB security group",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "from 0.0.0.0_0:{IndirectPort}": {
+                    "id": "from 0.0.0.0_0:{IndirectPort}",
+                    "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/SecurityGroup/from 0.0.0.0_0:{IndirectPort}",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                      "aws:cdk:cloudformation:props": {
+                        "ipProtocol": "tcp",
+                        "cidrIp": "0.0.0.0/0",
+                        "description": "too open for now",
+                        "fromPort": {
+                          "Fn::GetAtt": [
+                            "docdbDatabaseTestB8EFCB97",
+                            "Port"
+                          ]
+                        },
+                        "groupId": {
+                          "Fn::GetAtt": [
+                            "docdbDatabaseTestSecurityGroupE609EEC6",
+                            "GroupId"
+                          ]
+                        },
+                        "toPort": {
+                          "Fn::GetAtt": [
+                            "docdbDatabaseTestB8EFCB97",
+                            "Port"
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupIngress",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.8.0"
+                }
+              },
+              "Secret": {
+                "id": "Secret",
+                "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SecretsManager::Secret",
+                      "aws:cdk:cloudformation:props": {
+                        "description": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "Generated by the CDK for stack: ",
+                              {
+                                "Ref": "AWS::StackName"
+                              }
+                            ]
+                          ]
+                        },
+                        "generateSecretString": {
+                          "passwordLength": 41,
+                          "secretStringTemplate": "{\"username\":\"myuser\"}",
+                          "generateStringKey": "password",
+                          "excludeCharacters": "\"@/:"
+                        },
+                        "name": "/myapp/mydocdb/masteruser"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_secretsmanager.CfnSecret",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "Attachment": {
+                    "id": "Attachment",
+                    "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret/Attachment",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret/Attachment/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::SecretsManager::SecretTargetAttachment",
+                          "aws:cdk:cloudformation:props": {
+                            "secretId": {
+                              "Ref": "docdbDatabaseTestSecret71ED80F6"
+                            },
+                            "targetId": {
+                              "Ref": "docdbDatabaseTestB8EFCB97"
+                            },
+                            "targetType": "AWS::DocDB::DBCluster"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_secretsmanager.CfnSecretTargetAttachment",
+                          "version": "2.8.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_secretsmanager.SecretTargetAttachment",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_docdb.DatabaseSecret",
+                  "version": "2.8.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DocDB::DBCluster",
+                  "aws:cdk:cloudformation:props": {
+                    "masterUsername": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "{{resolve:secretsmanager:",
+                          {
+                            "Ref": "docdbDatabaseTestSecret71ED80F6"
+                          },
+                          ":SecretString:username::}}"
+                        ]
+                      ]
+                    },
+                    "masterUserPassword": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "{{resolve:secretsmanager:",
+                          {
+                            "Ref": "docdbDatabaseTestSecret71ED80F6"
+                          },
+                          ":SecretString:password::}}"
+                        ]
+                      ]
+                    },
+                    "dbSubnetGroupName": {
+                      "Ref": "docdbDatabaseTestSubnets0B1BD4F4"
+                    },
+                    "deletionProtection": false,
+                    "storageEncrypted": true,
+                    "vpcSecurityGroupIds": [
+                      {
+                        "Fn::GetAtt": [
+                          "docdbDatabaseTestSecurityGroupE609EEC6",
+                          "GroupId"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_docdb.CfnDBCluster",
+                  "version": "2.8.0"
+                }
+              },
+              "Instance1": {
+                "id": "Instance1",
+                "path": "Cdkv2ApiDocdbStack/docdbDatabaseTest/Instance1",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DocDB::DBInstance",
+                  "aws:cdk:cloudformation:props": {
+                    "dbClusterIdentifier": {
+                      "Ref": "docdbDatabaseTestB8EFCB97"
+                    },
+                    "dbInstanceClass": "db.r5.large"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_docdb.CfnDBInstance",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_docdb.DatabaseCluster",
+              "version": "2.8.0"
+            }
+          },
+          "dnCrudIAMRole": {
+            "id": "dnCrudIAMRole",
+            "path": "Cdkv2ApiDocdbStack/dnCrudIAMRole",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/dnCrudIAMRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonDocDBFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/SecretsManagerReadWrite"
+                          ]
+                        ]
+                      }
+                    ],
+                    "roleName": "dnCrudIAMRole"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.8.0"
+            }
+          },
+          "certLayer": {
+            "id": "certLayer",
+            "path": "Cdkv2ApiDocdbStack/certLayer",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "Cdkv2ApiDocdbStack/certLayer/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Cdkv2ApiDocdbStack/certLayer/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Cdkv2ApiDocdbStack/certLayer/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "Cdkv2ApiDocdbStack/certLayer/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "constructs.Construct",
+                          "version": "10.0.36"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.8.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/certLayer/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                  "aws:cdk:cloudformation:props": {
+                    "content": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "12a5d1fd95e14c9840036f726da6a4142a461df455f443330e40b9c2d180f478.zip"
+                    },
+                    "compatibleRuntimes": [
+                      "dotnetcore3.1"
+                    ],
+                    "description": "Dependency Layer for Certificates",
+                    "layerName": "certLayer"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.LayerVersion",
+              "version": "2.8.0"
+            }
+          },
+          "createOneLambda": {
+            "id": "createOneLambda",
+            "path": "Cdkv2ApiDocdbStack/createOneLambda",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "Cdkv2ApiDocdbStack/createOneLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Cdkv2ApiDocdbStack/createOneLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Cdkv2ApiDocdbStack/createOneLambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "Cdkv2ApiDocdbStack/createOneLambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "constructs.Construct",
+                          "version": "10.0.36"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.8.0"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "Cdkv2ApiDocdbStack/createOneLambda/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/createOneLambda/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackcreateOneLambda27B3A9FA",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.8.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/createOneLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "12a1db1eec700e5baa98da5977e213668b454bfc4df69fdc854c0e10d495c229.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "dnCrudIAMRole26E07972",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "HOME": "/tmp",
+                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "REGION": "us-west-2"
+                      }
+                    },
+                    "handler": "createOneLambda::dnCrud.Function::FunctionHandler",
+                    "layers": [
+                      {
+                        "Ref": "certLayerB3A9417F"
+                      }
+                    ],
+                    "runtime": "dotnetcore3.1",
+                    "timeout": 30,
+                    "vpcConfig": {
+                      "subnetIds": [
+                        {
+                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                        },
+                        {
+                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                        }
+                      ],
+                      "securityGroupIds": [
+                        {
+                          "Fn::GetAtt": [
+                            "createOneLambdaSecurityGroup8DCEC501",
+                            "GroupId"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.8.0"
+            }
+          },
+          "getAllLambda": {
+            "id": "getAllLambda",
+            "path": "Cdkv2ApiDocdbStack/getAllLambda",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "Cdkv2ApiDocdbStack/getAllLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Cdkv2ApiDocdbStack/getAllLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Cdkv2ApiDocdbStack/getAllLambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "Cdkv2ApiDocdbStack/getAllLambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "constructs.Construct",
+                          "version": "10.0.36"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.8.0"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "Cdkv2ApiDocdbStack/getAllLambda/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/getAllLambda/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackgetAllLambdaE20F6A54",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.8.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/getAllLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "f29a5a25a10fa7f05237ee7165f6e217b3059c11d6bb2f085262d406deeb3c9f.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "dnCrudIAMRole26E07972",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "HOME": "/tmp",
+                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "REGION": "us-west-2"
+                      }
+                    },
+                    "handler": "getAllLambda::dnCrud.Function::FunctionHandler",
+                    "layers": [
+                      {
+                        "Ref": "certLayerB3A9417F"
+                      }
+                    ],
+                    "runtime": "dotnetcore3.1",
+                    "timeout": 30,
+                    "vpcConfig": {
+                      "subnetIds": [
+                        {
+                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                        },
+                        {
+                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                        }
+                      ],
+                      "securityGroupIds": [
+                        {
+                          "Fn::GetAtt": [
+                            "getAllLambdaSecurityGroup6C82FB02",
+                            "GroupId"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.8.0"
+            }
+          },
+          "getOneLambda": {
+            "id": "getOneLambda",
+            "path": "Cdkv2ApiDocdbStack/getOneLambda",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "Cdkv2ApiDocdbStack/getOneLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Cdkv2ApiDocdbStack/getOneLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Cdkv2ApiDocdbStack/getOneLambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "Cdkv2ApiDocdbStack/getOneLambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "constructs.Construct",
+                          "version": "10.0.36"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.8.0"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "Cdkv2ApiDocdbStack/getOneLambda/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/getOneLambda/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackgetOneLambda8845EA5E",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.8.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/getOneLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "584e68c7241168ff9237fde9306385a390edc6168bf097e5be5d1621276e4130.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "dnCrudIAMRole26E07972",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "HOME": "/tmp",
+                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "REGION": "us-west-2"
+                      }
+                    },
+                    "handler": "getOneLambda::dnCrud.Function::FunctionHandler",
+                    "layers": [
+                      {
+                        "Ref": "certLayerB3A9417F"
+                      }
+                    ],
+                    "runtime": "dotnetcore3.1",
+                    "timeout": 30,
+                    "vpcConfig": {
+                      "subnetIds": [
+                        {
+                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                        },
+                        {
+                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                        }
+                      ],
+                      "securityGroupIds": [
+                        {
+                          "Fn::GetAtt": [
+                            "getOneLambdaSecurityGroupD92E4C7C",
+                            "GroupId"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.8.0"
+            }
+          },
+          "updateOneLambda": {
+            "id": "updateOneLambda",
+            "path": "Cdkv2ApiDocdbStack/updateOneLambda",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "Cdkv2ApiDocdbStack/updateOneLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Cdkv2ApiDocdbStack/updateOneLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Cdkv2ApiDocdbStack/updateOneLambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "Cdkv2ApiDocdbStack/updateOneLambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "constructs.Construct",
+                          "version": "10.0.36"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.8.0"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "Cdkv2ApiDocdbStack/updateOneLambda/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/updateOneLambda/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackupdateOneLambda80B99DAD",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.8.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/updateOneLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "4cfc9d38d4ca18730a006b49c9029d685e5150fb78ffdbbbd31e09c85c6071d1.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "dnCrudIAMRole26E07972",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "HOME": "/tmp",
+                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "REGION": "us-west-2"
+                      }
+                    },
+                    "handler": "updateOneLambda::dnCrud.Function::FunctionHandler",
+                    "layers": [
+                      {
+                        "Ref": "certLayerB3A9417F"
+                      }
+                    ],
+                    "runtime": "dotnetcore3.1",
+                    "timeout": 30,
+                    "vpcConfig": {
+                      "subnetIds": [
+                        {
+                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                        },
+                        {
+                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                        }
+                      ],
+                      "securityGroupIds": [
+                        {
+                          "Fn::GetAtt": [
+                            "updateOneLambdaSecurityGroupBDB279E2",
+                            "GroupId"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.8.0"
+            }
+          },
+          "deleteOneLambda": {
+            "id": "deleteOneLambda",
+            "path": "Cdkv2ApiDocdbStack/deleteOneLambda",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "Cdkv2ApiDocdbStack/deleteOneLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "Cdkv2ApiDocdbStack/deleteOneLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "Cdkv2ApiDocdbStack/deleteOneLambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "Cdkv2ApiDocdbStack/deleteOneLambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "constructs.Construct",
+                          "version": "10.0.36"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.8.0"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "Cdkv2ApiDocdbStack/deleteOneLambda/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/deleteOneLambda/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "Automatic security group for Lambda Function Cdkv2ApiDocdbStackdeleteOneLambdaE2610E88",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.8.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/deleteOneLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "ecded74bdf2d7f065ec176207f1b639d9d3e5469c584fe77113f770b66de1ac0.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "dnCrudIAMRole26E07972",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "HOME": "/tmp",
+                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "REGION": "us-west-2"
+                      }
+                    },
+                    "handler": "deleteOneLambda::dnCrud.Function::FunctionHandler",
+                    "layers": [
+                      {
+                        "Ref": "certLayerB3A9417F"
+                      }
+                    ],
+                    "runtime": "dotnetcore3.1",
+                    "timeout": 30,
+                    "vpcConfig": {
+                      "subnetIds": [
+                        {
+                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                        },
+                        {
+                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                        }
+                      ],
+                      "securityGroupIds": [
+                        {
+                          "Fn::GetAtt": [
+                            "deleteOneLambdaSecurityGroup99EA4036",
+                            "GroupId"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.8.0"
+            }
+          },
+          "crud-api": {
+            "id": "crud-api",
+            "path": "Cdkv2ApiDocdbStack/crud-api",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Cdkv2ApiDocdbStack/crud-api/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "description": "API for access to CRUD Lambdas to DocumentDb",
+                    "name": "Serverless Crud Service"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.8.0"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "Cdkv2ApiDocdbStack/crud-api/CloudWatchRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/crud-api/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.8.0"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "Cdkv2ApiDocdbStack/crud-api/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "crudapiCloudWatchRole3D6F08B8",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                  "version": "2.8.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "Cdkv2ApiDocdbStack/crud-api/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/crud-api/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "crudapiF1394973"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.8.0"
+                }
+              },
+              "DeploymentStage.prod": {
+                "id": "DeploymentStage.prod",
+                "path": "Cdkv2ApiDocdbStack/crud-api/DeploymentStage.prod",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/crud-api/DeploymentStage.prod/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "crudapiF1394973"
+                        },
+                        "deploymentId": {
+                          "Ref": "crudapiDeploymentB0D616B1d9ab60af844487ad11558fdf94084a0a"
+                        },
+                        "stageName": "prod"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.8.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "Cdkv2ApiDocdbStack/crud-api/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.8.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "Cdkv2ApiDocdbStack/crud-api/Default",
+                "children": {
+                  "api": {
+                    "id": "api",
+                    "path": "Cdkv2ApiDocdbStack/crud-api/Default/api",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "crudapiF1394973",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "api",
+                            "restApiId": {
+                              "Ref": "crudapiF1394973"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.8.0"
+                        }
+                      },
+                      "POST": {
+                        "id": "POST",
+                        "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/POST",
+                        "children": {
+                          "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api": {
+                            "id": "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/POST/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "createOneLambdaBCAB9E43",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "crudapiF1394973"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "crudapiDeploymentStageprod8084CAA8"
+                                      },
+                                      "/POST/api"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api": {
+                            "id": "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/POST/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "createOneLambdaBCAB9E43",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "crudapiF1394973"
+                                      },
+                                      "/test-invoke-stage/POST/api"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/POST/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "POST",
+                                "resourceId": {
+                                  "Ref": "crudapi51FEA0EB"
+                                },
+                                "restApiId": {
+                                  "Ref": "crudapiF1394973"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "createOneLambdaBCAB9E43",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.8.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.8.0"
+                        }
+                      },
+                      "GET": {
+                        "id": "GET",
+                        "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/GET",
+                        "children": {
+                          "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api": {
+                            "id": "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/GET/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "getAllLambda83527A6D",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "crudapiF1394973"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "crudapiDeploymentStageprod8084CAA8"
+                                      },
+                                      "/GET/api"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api": {
+                            "id": "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/GET/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "getAllLambda83527A6D",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "crudapiF1394973"
+                                      },
+                                      "/test-invoke-stage/GET/api"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/GET/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "GET",
+                                "resourceId": {
+                                  "Ref": "crudapi51FEA0EB"
+                                },
+                                "restApiId": {
+                                  "Ref": "crudapiF1394973"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "getAllLambda83527A6D",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.8.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.8.0"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "crudapi51FEA0EB"
+                                },
+                                "restApiId": {
+                                  "Ref": "crudapiF1394973"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{\"statusCode\": 200}"
+                                  },
+                                  "passthroughBehavior": "NEVER",
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "200",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "200",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true,
+                                      "method.response.header.Access-Control-Allow-Credentials": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.8.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.8.0"
+                        }
+                      },
+                      "{id}": {
+                        "id": "{id}",
+                        "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                              "aws:cdk:cloudformation:props": {
+                                "parentId": {
+                                  "Ref": "crudapi51FEA0EB"
+                                },
+                                "pathPart": "{id}",
+                                "restApiId": {
+                                  "Ref": "crudapiF1394973"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "GET": {
+                            "id": "GET",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET",
+                            "children": {
+                              "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}": {
+                                "id": "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "getOneLambda8B5784F4",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "AWS::AccountId"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "crudapiF1394973"
+                                          },
+                                          "/",
+                                          {
+                                            "Ref": "crudapiDeploymentStageprod8084CAA8"
+                                          },
+                                          "/GET/api/*"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.8.0"
+                                }
+                              },
+                              "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}": {
+                                "id": "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "getOneLambda8B5784F4",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "AWS::AccountId"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "crudapiF1394973"
+                                          },
+                                          "/test-invoke-stage/GET/api/*"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.8.0"
+                                }
+                              },
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                                  "aws:cdk:cloudformation:props": {
+                                    "httpMethod": "GET",
+                                    "resourceId": {
+                                      "Ref": "crudapiidEEFB7698"
+                                    },
+                                    "restApiId": {
+                                      "Ref": "crudapiF1394973"
+                                    },
+                                    "authorizationType": "NONE",
+                                    "integration": {
+                                      "type": "AWS_PROXY",
+                                      "uri": {
+                                        "Fn::Join": [
+                                          "",
+                                          [
+                                            "arn:",
+                                            {
+                                              "Ref": "AWS::Partition"
+                                            },
+                                            ":apigateway:",
+                                            {
+                                              "Ref": "AWS::Region"
+                                            },
+                                            ":lambda:path/2015-03-31/functions/",
+                                            {
+                                              "Fn::GetAtt": [
+                                                "getOneLambda8B5784F4",
+                                                "Arn"
+                                              ]
+                                            },
+                                            "/invocations"
+                                          ]
+                                        ]
+                                      },
+                                      "integrationHttpMethod": "POST"
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                                  "version": "2.8.0"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "PATCH": {
+                            "id": "PATCH",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH",
+                            "children": {
+                              "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}": {
+                                "id": "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "updateOneLambdaA6FE6E48",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "AWS::AccountId"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "crudapiF1394973"
+                                          },
+                                          "/",
+                                          {
+                                            "Ref": "crudapiDeploymentStageprod8084CAA8"
+                                          },
+                                          "/PATCH/api/*"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.8.0"
+                                }
+                              },
+                              "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}": {
+                                "id": "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "updateOneLambdaA6FE6E48",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "AWS::AccountId"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "crudapiF1394973"
+                                          },
+                                          "/test-invoke-stage/PATCH/api/*"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.8.0"
+                                }
+                              },
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                                  "aws:cdk:cloudformation:props": {
+                                    "httpMethod": "PATCH",
+                                    "resourceId": {
+                                      "Ref": "crudapiidEEFB7698"
+                                    },
+                                    "restApiId": {
+                                      "Ref": "crudapiF1394973"
+                                    },
+                                    "authorizationType": "NONE",
+                                    "integration": {
+                                      "type": "AWS_PROXY",
+                                      "uri": {
+                                        "Fn::Join": [
+                                          "",
+                                          [
+                                            "arn:",
+                                            {
+                                              "Ref": "AWS::Partition"
+                                            },
+                                            ":apigateway:",
+                                            {
+                                              "Ref": "AWS::Region"
+                                            },
+                                            ":lambda:path/2015-03-31/functions/",
+                                            {
+                                              "Fn::GetAtt": [
+                                                "updateOneLambdaA6FE6E48",
+                                                "Arn"
+                                              ]
+                                            },
+                                            "/invocations"
+                                          ]
+                                        ]
+                                      },
+                                      "integrationHttpMethod": "POST"
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                                  "version": "2.8.0"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "DELETE": {
+                            "id": "DELETE",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE",
+                            "children": {
+                              "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}": {
+                                "id": "ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "deleteOneLambdaA2A42A56",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "AWS::AccountId"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "crudapiF1394973"
+                                          },
+                                          "/",
+                                          {
+                                            "Ref": "crudapiDeploymentStageprod8084CAA8"
+                                          },
+                                          "/DELETE/api/*"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.8.0"
+                                }
+                              },
+                              "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}": {
+                                "id": "ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                                  "aws:cdk:cloudformation:props": {
+                                    "action": "lambda:InvokeFunction",
+                                    "functionName": {
+                                      "Fn::GetAtt": [
+                                        "deleteOneLambdaA2A42A56",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "principal": "apigateway.amazonaws.com",
+                                    "sourceArn": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":execute-api:",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "AWS::AccountId"
+                                          },
+                                          ":",
+                                          {
+                                            "Ref": "crudapiF1394973"
+                                          },
+                                          "/test-invoke-stage/DELETE/api/*"
+                                        ]
+                                      ]
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                                  "version": "2.8.0"
+                                }
+                              },
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                                  "aws:cdk:cloudformation:props": {
+                                    "httpMethod": "DELETE",
+                                    "resourceId": {
+                                      "Ref": "crudapiidEEFB7698"
+                                    },
+                                    "restApiId": {
+                                      "Ref": "crudapiF1394973"
+                                    },
+                                    "authorizationType": "NONE",
+                                    "integration": {
+                                      "type": "AWS_PROXY",
+                                      "uri": {
+                                        "Fn::Join": [
+                                          "",
+                                          [
+                                            "arn:",
+                                            {
+                                              "Ref": "AWS::Partition"
+                                            },
+                                            ":apigateway:",
+                                            {
+                                              "Ref": "AWS::Region"
+                                            },
+                                            ":lambda:path/2015-03-31/functions/",
+                                            {
+                                              "Fn::GetAtt": [
+                                                "deleteOneLambdaA2A42A56",
+                                                "Arn"
+                                              ]
+                                            },
+                                            "/invocations"
+                                          ]
+                                        ]
+                                      },
+                                      "integrationHttpMethod": "POST"
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                                  "version": "2.8.0"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                              "version": "2.8.0"
+                            }
+                          },
+                          "OPTIONS": {
+                            "id": "OPTIONS",
+                            "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/OPTIONS",
+                            "children": {
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/OPTIONS/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                                  "aws:cdk:cloudformation:props": {
+                                    "httpMethod": "OPTIONS",
+                                    "resourceId": {
+                                      "Ref": "crudapiidEEFB7698"
+                                    },
+                                    "restApiId": {
+                                      "Ref": "crudapiF1394973"
+                                    },
+                                    "authorizationType": "NONE",
+                                    "integration": {
+                                      "type": "MOCK",
+                                      "requestTemplates": {
+                                        "application/json": "{\"statusCode\": 200}"
+                                      },
+                                      "passthroughBehavior": "NEVER",
+                                      "integrationResponses": [
+                                        {
+                                          "statusCode": "200",
+                                          "responseParameters": {
+                                            "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                                            "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                            "method.response.header.Access-Control-Allow-Credentials": "'false'",
+                                            "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "methodResponses": [
+                                      {
+                                        "statusCode": "200",
+                                        "responseParameters": {
+                                          "method.response.header.Access-Control-Allow-Headers": true,
+                                          "method.response.header.Access-Control-Allow-Methods": true,
+                                          "method.response.header.Access-Control-Allow-Credentials": true,
+                                          "method.response.header.Access-Control-Allow-Origin": true
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                                  "version": "2.8.0"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                              "version": "2.8.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                          "version": "2.8.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
+              "version": "2.8.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "Cdkv2ApiDocdbStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "Cdkv2ApiDocdbStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.8.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "Cdkv2ApiDocdbStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.8.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.36"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.8.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.8.0"
+    }
+  }
+}

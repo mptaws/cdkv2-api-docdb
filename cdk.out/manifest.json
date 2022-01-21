@@ -1,0 +1,460 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "Cdkv2ApiDocdbStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "Cdkv2ApiDocdbStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "Cdkv2ApiDocdbStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "Cdkv2ApiDocdbStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1e0674af8d8efa69a27206c9a8037e19761b29651f4ac55ad247d32b95f3d29e.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "Cdkv2ApiDocdbStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "Cdkv2ApiDocdbStack.assets"
+      ],
+      "metadata": {
+        "/Cdkv2ApiDocdbStack/DocDbVpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpc838DFB07"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet1RouteTable90C5B944"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet1RouteTableAssociation9B33F1DF"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet1DefaultRoute23891593"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet2Subnet9F482FAD"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet2RouteTable97608A44"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet2RouteTableAssociationC7DAEC62"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdbSubnet2DefaultRoute989C67C6"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet1Subnet51657834"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet1RouteTableAssociationC7C9E77E"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet1DefaultRoute16DA0ECA"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet1EIP2E95BC63"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet2RouteTableAssociation29D71FFE"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcdmzSubnet2DefaultRouteF750075F"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcIGWD853B964"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcVPCGW09B5DD58"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/docdbDatabaseTest/Subnets": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "docdbDatabaseTestSubnets0B1BD4F4"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/docdbDatabaseTest/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "docdbDatabaseTestSecurityGroupE609EEC6"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/docdbDatabaseTest/SecurityGroup/from 0.0.0.0_0:{IndirectPort}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "docdbDatabaseTestSecurityGroupfrom00000IndirectPort0DA4A6A8"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "docdbDatabaseTestSecret71ED80F6"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/docdbDatabaseTest/Secret/Attachment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "docdbDatabaseTestSecretAttachment705737FB"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/docdbDatabaseTest/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "docdbDatabaseTestB8EFCB97"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/docdbDatabaseTest/Instance1": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "docdbDatabaseTestInstance115B581C6"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/dnCrudIAMRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "dnCrudIAMRole26E07972"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/certLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "certLayerB3A9417F"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/createOneLambda/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createOneLambdaSecurityGroup8DCEC501"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/createOneLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "createOneLambdaBCAB9E43"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/getAllLambda/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getAllLambdaSecurityGroup6C82FB02"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/getAllLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getAllLambda83527A6D"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/getOneLambda/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getOneLambdaSecurityGroupD92E4C7C"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/getOneLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getOneLambda8B5784F4"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/updateOneLambda/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "updateOneLambdaSecurityGroupBDB279E2"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/updateOneLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "updateOneLambdaA6FE6E48"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/deleteOneLambda/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteOneLambdaSecurityGroup99EA4036"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/deleteOneLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deleteOneLambdaA2A42A56"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiF1394973"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiCloudWatchRole3D6F08B8"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiAccount69C5E762"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiDeploymentB0D616B1d9ab60af844487ad11558fdf94084a0a"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiDeploymentStageprod8084CAA8"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiEndpoint4B1269EE"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapi51FEA0EB"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/POST/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiPOSTApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAPOSTapi129F0D19"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/POST/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.POST..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiPOSTApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAPOSTapi1A9A9C3D"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiPOSTE150591A"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/GET/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiGETApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapiB033164C"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/GET/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiGETApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapi742C2514"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiGET58B67388"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiOPTIONS495268A9"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidEEFB7698"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidGETApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapiidC6D74AB2"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.GET..api.{id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidGETApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAGETapiid7B396096"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidGET1FCD1E1E"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidPATCHApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBAPATCHapiidA86142C5"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.PATCH..api.{id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidPATCHApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBAPATCHapiid31918E0D"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/PATCH/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidPATCHC44E0DA6"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/ApiPermission.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidDELETEApiPermissionCdkv2ApiDocdbStackcrudapi5D5C9EBADELETEapiid1BFAC8D9"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/ApiPermission.Test.Cdkv2ApiDocdbStackcrudapi5D5C9EBA.DELETE..api.{id}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidDELETEApiPermissionTestCdkv2ApiDocdbStackcrudapi5D5C9EBADELETEapiidF8F0566A"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/DELETE/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidDELETEA35187DF"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/crud-api/Default/api/{id}/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "crudapiidOPTIONS12BB4072"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "Cdkv2ApiDocdbStack"
+    }
+  }
+}
