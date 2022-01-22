@@ -8,46 +8,59 @@ import { Construct } from 'constructs';
 
 export class Cdkv2ApiDocdbStack extends cdk.Stack {
 
-  readonly SECRETNAME = "/myapp/mydocdb/masteruser";
+  readonly SECRETNAME = "apiCrudDocDbSecret";
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const vpc = new ec2.Vpc(this, "DocDbVpc", {
-      cidr: "10.3.0.0/16",
+      cidr: "10.10.0.0/16",
       maxAzs: 2,
-      natGateways: 1,
+      natGateways: 0,
       enableDnsHostnames: true,
       enableDnsSupport: true,
 
       subnetConfiguration: [{
         cidrMask: 24,
-        name: 'db',
-        subnetType: ec2.SubnetType.PRIVATE_WITH_NAT
+        name: 'Private-Isolated',
+        subnetType: ec2.SubnetType.PRIVATE_ISOLATED
       }, {
         cidrMask: 24,
-        name: 'dmz',
+        name: 'Public',
         subnetType: ec2.SubnetType.PUBLIC,
       }],
     });
 
+    const secretsManagerEndpoint = vpc.addInterfaceEndpoint('sm-endpoint', {
+      service: ec2.InterfaceVpcEndpointAwsService.SECRETS_MANAGER,
+      privateDnsEnabled: true,
+      subnets: { subnetType: ec2.SubnetType.PRIVATE_ISOLATED }
+    });
+
+    secretsManagerEndpoint.connections.allowDefaultPortFromAnyIpv4();
+
+    new cdk.CfnOutput(this, 'SMEndpoint', {
+      value: secretsManagerEndpoint.vpcEndpointId
+    });
+
+
     const cluster = new docdb.DatabaseCluster(this, 'docdbDatabaseTest', {
       masterUser: {
         username: 'myuser',
-        excludeCharacters: '\"@/:', // TODO: add more symbols to allow for easier console connect
+        excludeCharacters: '\"@/:#$;,>+~)-.\'',
         secretName: this.SECRETNAME,
       },
       instanceType: ec2.InstanceType.of(ec2.InstanceClass.R5, ec2.InstanceSize.LARGE),
       instances: 1,
       vpcSubnets: {
-        subnetType: ec2.SubnetType.PUBLIC,
+        subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
       },
       vpc,
       deletionProtection: false,
       removalPolicy: cdk.RemovalPolicy.DESTROY
     });
 
-    cluster.connections.allowDefaultPortFromAnyIpv4('too open for now');
+    cluster.connections.allowDefaultPortFromAnyIpv4();
 
     const dnCrudIAMRole = new iam.Role(this, 'dnCrudIAMRole', {
       roleName: 'dnCrudIAMRole',

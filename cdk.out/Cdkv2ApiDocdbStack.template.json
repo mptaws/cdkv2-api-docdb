@@ -3,7 +3,7 @@
     "DocDbVpc838DFB07": {
       "Type": "AWS::EC2::VPC",
       "Properties": {
-        "CidrBlock": "10.3.0.0/16",
+        "CidrBlock": "10.10.0.0/16",
         "EnableDnsHostnames": true,
         "EnableDnsSupport": true,
         "InstanceTenancy": "default",
@@ -18,10 +18,10 @@
         "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Resource"
       }
     },
-    "DocDbVpcdbSubnet1Subnet4FBF3E63": {
+    "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.3.0.0/24",
+        "CidrBlock": "10.10.0.0/24",
         "VpcId": {
           "Ref": "DocDbVpc838DFB07"
         },
@@ -37,23 +37,23 @@
         "Tags": [
           {
             "Key": "aws-cdk:subnet-name",
-            "Value": "db"
+            "Value": "Private-Isolated"
           },
           {
             "Key": "aws-cdk:subnet-type",
-            "Value": "Private"
+            "Value": "Isolated"
           },
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Subnet"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/Subnet"
       }
     },
-    "DocDbVpcdbSubnet1RouteTable90C5B944": {
+    "DocDbVpcPrivateIsolatedSubnet1RouteTableD6B5B9D8": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
@@ -62,47 +62,32 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTable"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/RouteTable"
       }
     },
-    "DocDbVpcdbSubnet1RouteTableAssociation9B33F1DF": {
+    "DocDbVpcPrivateIsolatedSubnet1RouteTableAssociation8341EBEA": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
+          "Ref": "DocDbVpcPrivateIsolatedSubnet1RouteTableD6B5B9D8"
         },
         "SubnetId": {
-          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+          "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/RouteTableAssociation"
       }
     },
-    "DocDbVpcdbSubnet1DefaultRoute23891593": {
-      "Type": "AWS::EC2::Route",
-      "Properties": {
-        "RouteTableId": {
-          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
-        },
-        "DestinationCidrBlock": "0.0.0.0/0",
-        "NatGatewayId": {
-          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/DefaultRoute"
-      }
-    },
-    "DocDbVpcdbSubnet2Subnet9F482FAD": {
+    "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.3.1.0/24",
+        "CidrBlock": "10.10.1.0/24",
         "VpcId": {
           "Ref": "DocDbVpc838DFB07"
         },
@@ -118,23 +103,23 @@
         "Tags": [
           {
             "Key": "aws-cdk:subnet-name",
-            "Value": "db"
+            "Value": "Private-Isolated"
           },
           {
             "Key": "aws-cdk:subnet-type",
-            "Value": "Private"
+            "Value": "Isolated"
           },
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Subnet"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/Subnet"
       }
     },
-    "DocDbVpcdbSubnet2RouteTable97608A44": {
+    "DocDbVpcPrivateIsolatedSubnet2RouteTableD18E3B18": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
@@ -143,47 +128,32 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTable"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/RouteTable"
       }
     },
-    "DocDbVpcdbSubnet2RouteTableAssociationC7DAEC62": {
+    "DocDbVpcPrivateIsolatedSubnet2RouteTableAssociation81B31669": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
+          "Ref": "DocDbVpcPrivateIsolatedSubnet2RouteTableD18E3B18"
         },
         "SubnetId": {
-          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+          "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/RouteTableAssociation"
       }
     },
-    "DocDbVpcdbSubnet2DefaultRoute989C67C6": {
-      "Type": "AWS::EC2::Route",
-      "Properties": {
-        "RouteTableId": {
-          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
-        },
-        "DestinationCidrBlock": "0.0.0.0/0",
-        "NatGatewayId": {
-          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/DefaultRoute"
-      }
-    },
-    "DocDbVpcdmzSubnet1Subnet51657834": {
+    "DocDbVpcPublicSubnet1SubnetE5A9C787": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.3.2.0/24",
+        "CidrBlock": "10.10.2.0/24",
         "VpcId": {
           "Ref": "DocDbVpc838DFB07"
         },
@@ -199,7 +169,7 @@
         "Tags": [
           {
             "Key": "aws-cdk:subnet-name",
-            "Value": "dmz"
+            "Value": "Public"
           },
           {
             "Key": "aws-cdk:subnet-type",
@@ -207,15 +177,15 @@
           },
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Subnet"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/Subnet"
       }
     },
-    "DocDbVpcdmzSubnet1RouteTableF95FC829": {
+    "DocDbVpcPublicSubnet1RouteTableB7E4BF00": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
@@ -224,33 +194,33 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTable"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/RouteTable"
       }
     },
-    "DocDbVpcdmzSubnet1RouteTableAssociationC7C9E77E": {
+    "DocDbVpcPublicSubnet1RouteTableAssociation0CCE48D6": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+          "Ref": "DocDbVpcPublicSubnet1RouteTableB7E4BF00"
         },
         "SubnetId": {
-          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+          "Ref": "DocDbVpcPublicSubnet1SubnetE5A9C787"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/RouteTableAssociation"
       }
     },
-    "DocDbVpcdmzSubnet1DefaultRoute16DA0ECA": {
+    "DocDbVpcPublicSubnet1DefaultRoute98FB8AA5": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+          "Ref": "DocDbVpcPublicSubnet1RouteTableB7E4BF00"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
@@ -261,51 +231,13 @@
         "DocDbVpcVPCGW09B5DD58"
       ],
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/DefaultRoute"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/DefaultRoute"
       }
     },
-    "DocDbVpcdmzSubnet1EIP2E95BC63": {
-      "Type": "AWS::EC2::EIP",
-      "Properties": {
-        "Domain": "vpc",
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/EIP"
-      }
-    },
-    "DocDbVpcdmzSubnet1NATGateway1D2CC063": {
-      "Type": "AWS::EC2::NatGateway",
-      "Properties": {
-        "SubnetId": {
-          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
-        },
-        "AllocationId": {
-          "Fn::GetAtt": [
-            "DocDbVpcdmzSubnet1EIP2E95BC63",
-            "AllocationId"
-          ]
-        },
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/NATGateway"
-      }
-    },
-    "DocDbVpcdmzSubnet2SubnetDF5353C9": {
+    "DocDbVpcPublicSubnet2Subnet64B4B0B1": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.3.3.0/24",
+        "CidrBlock": "10.10.3.0/24",
         "VpcId": {
           "Ref": "DocDbVpc838DFB07"
         },
@@ -321,7 +253,7 @@
         "Tags": [
           {
             "Key": "aws-cdk:subnet-name",
-            "Value": "dmz"
+            "Value": "Public"
           },
           {
             "Key": "aws-cdk:subnet-type",
@@ -329,15 +261,15 @@
           },
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Subnet"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/Subnet"
       }
     },
-    "DocDbVpcdmzSubnet2RouteTableC4E1D0A1": {
+    "DocDbVpcPublicSubnet2RouteTable92CE24DB": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
@@ -346,33 +278,33 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTable"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/RouteTable"
       }
     },
-    "DocDbVpcdmzSubnet2RouteTableAssociation29D71FFE": {
+    "DocDbVpcPublicSubnet2RouteTableAssociationF7B2590F": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+          "Ref": "DocDbVpcPublicSubnet2RouteTable92CE24DB"
         },
         "SubnetId": {
-          "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+          "Ref": "DocDbVpcPublicSubnet2Subnet64B4B0B1"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/RouteTableAssociation"
       }
     },
-    "DocDbVpcdmzSubnet2DefaultRouteF750075F": {
+    "DocDbVpcPublicSubnet2DefaultRoute8FA04A20": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+          "Ref": "DocDbVpcPublicSubnet2RouteTable92CE24DB"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
@@ -383,7 +315,7 @@
         "DocDbVpcVPCGW09B5DD58"
       ],
       "Metadata": {
-        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/DefaultRoute"
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/DefaultRoute"
       }
     },
     "DocDbVpcIGWD853B964": {
@@ -414,16 +346,117 @@
         "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/VPCGW"
       }
     },
+    "DocDbVpcsmendpointSecurityGroup17380F7D": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "DocDbVpc838DFB07",
+                "CidrBlock"
+              ]
+            },
+            "Description": {
+              "Fn::Join": [
+                "",
+                [
+                  "from ",
+                  {
+                    "Fn::GetAtt": [
+                      "DocDbVpc838DFB07",
+                      "CidrBlock"
+                    ]
+                  },
+                  ":443"
+                ]
+              ]
+            },
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Cdkv2ApiDocdbStack/DocDbVpc"
+          }
+        ],
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/SecurityGroup/Resource"
+      }
+    },
+    "DocDbVpcsmendpoint72E4329B": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".secretsmanager"
+            ]
+          ]
+        },
+        "VpcId": {
+          "Ref": "DocDbVpc838DFB07"
+        },
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "DocDbVpcsmendpointSecurityGroup17380F7D",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          {
+            "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
+          },
+          {
+            "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
+          }
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/Resource"
+      }
+    },
     "docdbDatabaseTestSubnets0B1BD4F4": {
       "Type": "AWS::DocDB::DBSubnetGroup",
       "Properties": {
         "DBSubnetGroupDescription": "Subnets for docdbDatabaseTest database",
         "SubnetIds": [
           {
-            "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+            "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
           },
           {
-            "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+            "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
           }
         ]
       },
@@ -457,7 +490,7 @@
       "Properties": {
         "IpProtocol": "tcp",
         "CidrIp": "0.0.0.0/0",
-        "Description": "too open for now",
+        "Description": "from 0.0.0.0/0:{IndirectPort}",
         "FromPort": {
           "Fn::GetAtt": [
             "docdbDatabaseTestB8EFCB97",
@@ -496,12 +529,12 @@
           ]
         },
         "GenerateSecretString": {
-          "ExcludeCharacters": "\"@/:",
+          "ExcludeCharacters": "\"@/:#$;,>+~)-.'",
           "GenerateStringKey": "password",
           "PasswordLength": 41,
           "SecretStringTemplate": "{\"username\":\"myuser\"}"
         },
-        "Name": "/myapp/mydocdb/masteruser"
+        "Name": "apiCrudDocDbSecret"
       },
       "UpdateReplacePolicy": "Delete",
       "DeletionPolicy": "Delete",
@@ -579,10 +612,6 @@
         },
         "DBInstanceClass": "db.r5.large"
       },
-      "DependsOn": [
-        "DocDbVpcdmzSubnet1DefaultRoute16DA0ECA",
-        "DocDbVpcdmzSubnet2DefaultRouteF750075F"
-      ],
       "UpdateReplacePolicy": "Delete",
       "DeletionPolicy": "Delete",
       "Metadata": {
@@ -710,7 +739,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "12a1db1eec700e5baa98da5977e213668b454bfc4df69fdc854c0e10d495c229.zip"
+          "S3Key": "0f65dc926fad2a51bef70647c9b507ef71f116a27ac27e2dd95ffdd6f5a2f214.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -721,7 +750,7 @@
         "Environment": {
           "Variables": {
             "HOME": "/tmp",
-            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "SECRETNAME": "apiCrudDocDbSecret",
             "REGION": "us-west-2"
           }
         },
@@ -744,10 +773,10 @@
           ],
           "SubnetIds": [
             {
-              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
             },
             {
-              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
             }
           ]
         }
@@ -757,7 +786,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "Cdkv2ApiDocdbStack/createOneLambda/Resource",
-        "aws:asset:path": "asset.12a1db1eec700e5baa98da5977e213668b454bfc4df69fdc854c0e10d495c229",
+        "aws:asset:path": "asset.0f65dc926fad2a51bef70647c9b507ef71f116a27ac27e2dd95ffdd6f5a2f214",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -799,7 +828,7 @@
         "Environment": {
           "Variables": {
             "HOME": "/tmp",
-            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "SECRETNAME": "apiCrudDocDbSecret",
             "REGION": "us-west-2"
           }
         },
@@ -822,10 +851,10 @@
           ],
           "SubnetIds": [
             {
-              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
             },
             {
-              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
             }
           ]
         }
@@ -877,7 +906,7 @@
         "Environment": {
           "Variables": {
             "HOME": "/tmp",
-            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "SECRETNAME": "apiCrudDocDbSecret",
             "REGION": "us-west-2"
           }
         },
@@ -900,10 +929,10 @@
           ],
           "SubnetIds": [
             {
-              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
             },
             {
-              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
             }
           ]
         }
@@ -955,7 +984,7 @@
         "Environment": {
           "Variables": {
             "HOME": "/tmp",
-            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "SECRETNAME": "apiCrudDocDbSecret",
             "REGION": "us-west-2"
           }
         },
@@ -978,10 +1007,10 @@
           ],
           "SubnetIds": [
             {
-              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
             },
             {
-              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
             }
           ]
         }
@@ -1033,7 +1062,7 @@
         "Environment": {
           "Variables": {
             "HOME": "/tmp",
-            "SECRETNAME": "/myapp/mydocdb/masteruser",
+            "SECRETNAME": "apiCrudDocDbSecret",
             "REGION": "us-west-2"
           }
         },
@@ -1056,10 +1085,10 @@
           ],
           "SubnetIds": [
             {
-              "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
             },
             {
-              "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+              "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
             }
           ]
         }
@@ -1937,7 +1966,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/31STW/bMAz9Lb0r2toV2K5OshUB9mEkRa4FLXOuGlsyRKpFYPi/j7KSOulhJz4+PZKPhO70N/35Bt5oYerDorWVHnYM5qCEehrQ3Olh3xu1+uv25UqVwb4C4y5WDjmRM9r6yPgIVYszP3MFkTcW2Hr3LlZlrFpr5hbfN2UKv4EfZMgbHFO2cYxBBBeUODllBYvX5w4dqx2aGCwfH4KP/WThv8TGNQGJRlV7U8vSa2CogHDVRpKBSb9eZmu5wVkgXUK2u15eiTeOGJzBUdEkoQ4cNBj0kGenqhweITTIF97fBR9fRmWh08PW56umOKoWuqoGPfyEI4Y9Bjod9Sr/EZ05X/sSlxg6S0kiPr88AZE41UUKkutlNAfkpeypoLdNvrIYQOKit5OHGRbG+Cj219i3/nje5CKTn9Tk7zABKfUxGJzan5NTz4x/IT/7OlEZjeOsmzymRtY1SfEnch/5qlzwyrva8rSe8zXqF/r0enuvb7/q+5sXsnYRxLHtUG9z/Ad/r/sVAAMAAA=="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/11Sy27jMAz8lt4VbV/A7tVJ2iJAiw2SIteClllXjS0ZItUiMPzvpaykeZw4HA7Joexb/U9fX8E3TUy1nTS21P2awWyVUG89mlvdbzqjZu9us5ypZbBfwLiOpUNO5BGtfGR8hbLBI3/kCiJvLLD1Ti1j2Vhz0ZnAwjEGIZ9kxTfs9kv3WcFi66NFx2rUvYNBcfbgqs5bIddoYrC8ewo+dqOFS0Jm/aov6wtXByQaVOVNJW8wB4YSCGdNJFmW9PNptpznHQQyJeQz5tMz8cIRgzM4KBol1IKDGoPu8+7UlcMrhBr55L5fwWVlUBZa3a98fuQUB9VAW1ag+2fYYdhgoPTGUj3LH6MzvC+c4iWG1lKSiM+7NyASp7pIQXI9jWaLPJU7FXS2zl9CDCBx0dnRwxEWxvgo9ufYNX53uOQkkx+rzn/HCKTVx2BwHH9I9jMzfkH+8FWiMhqGM93/yF1kNbpNI62rz9oFz7yrLI/nOV+h/qQ/Xzf3+uavvr/6JGsnQRzbFvUqxx+DMoy2DwMAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "Cdkv2ApiDocdbStack/CDKMetadata/Default"
@@ -1946,6 +1975,11 @@
     }
   },
   "Outputs": {
+    "SMEndpoint": {
+      "Value": {
+        "Ref": "DocDbVpcsmendpoint72E4329B"
+      }
+    },
     "crudapiEndpoint4B1269EE": {
       "Value": {
         "Fn::Join": [

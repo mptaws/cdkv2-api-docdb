@@ -26,7 +26,7 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
                   "aws:cdk:cloudformation:props": {
-                    "cidrBlock": "10.3.0.0/16",
+                    "cidrBlock": "10.10.0.0/16",
                     "enableDnsHostnames": true,
                     "enableDnsSupport": true,
                     "instanceTenancy": "default",
@@ -43,17 +43,17 @@
                   "version": "2.8.0"
                 }
               },
-              "dbSubnet1": {
-                "id": "dbSubnet1",
-                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1",
+              "Private-IsolatedSubnet1": {
+                "id": "Private-IsolatedSubnet1",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
-                        "cidrBlock": "10.3.0.0/24",
+                        "cidrBlock": "10.10.0.0/24",
                         "vpcId": {
                           "Ref": "DocDbVpc838DFB07"
                         },
@@ -69,15 +69,15 @@
                         "tags": [
                           {
                             "key": "aws-cdk:subnet-name",
-                            "value": "db"
+                            "value": "Private-Isolated"
                           },
                           {
                             "key": "aws-cdk:subnet-type",
-                            "value": "Private"
+                            "value": "Isolated"
                           },
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1"
                           }
                         ]
                       }
@@ -89,7 +89,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/Acl",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.Resource",
                       "version": "2.8.0"
@@ -97,7 +97,7 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
@@ -107,7 +107,7 @@
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1"
                           }
                         ]
                       }
@@ -119,40 +119,20 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet1RouteTableD6B5B9D8"
                         },
                         "subnetId": {
-                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
-                      "version": "2.8.0"
-                    }
-                  },
-                  "DefaultRoute": {
-                    "id": "DefaultRoute",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/DefaultRoute",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
-                      "aws:cdk:cloudformation:props": {
-                        "routeTableId": {
-                          "Ref": "DocDbVpcdbSubnet1RouteTable90C5B944"
-                        },
-                        "destinationCidrBlock": "0.0.0.0/0",
-                        "natGatewayId": {
-                          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
                       "version": "2.8.0"
                     }
                   }
@@ -162,17 +142,17 @@
                   "version": "2.8.0"
                 }
               },
-              "dbSubnet2": {
-                "id": "dbSubnet2",
-                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2",
+              "Private-IsolatedSubnet2": {
+                "id": "Private-IsolatedSubnet2",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
-                        "cidrBlock": "10.3.1.0/24",
+                        "cidrBlock": "10.10.1.0/24",
                         "vpcId": {
                           "Ref": "DocDbVpc838DFB07"
                         },
@@ -188,15 +168,15 @@
                         "tags": [
                           {
                             "key": "aws-cdk:subnet-name",
-                            "value": "db"
+                            "value": "Private-Isolated"
                           },
                           {
                             "key": "aws-cdk:subnet-type",
-                            "value": "Private"
+                            "value": "Isolated"
                           },
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2"
                           }
                         ]
                       }
@@ -208,7 +188,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/Acl",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.Resource",
                       "version": "2.8.0"
@@ -216,7 +196,7 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
@@ -226,7 +206,7 @@
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2"
                           }
                         ]
                       }
@@ -238,40 +218,20 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet2RouteTableD18E3B18"
                         },
                         "subnetId": {
-                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
-                      "version": "2.8.0"
-                    }
-                  },
-                  "DefaultRoute": {
-                    "id": "DefaultRoute",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/DefaultRoute",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
-                      "aws:cdk:cloudformation:props": {
-                        "routeTableId": {
-                          "Ref": "DocDbVpcdbSubnet2RouteTable97608A44"
-                        },
-                        "destinationCidrBlock": "0.0.0.0/0",
-                        "natGatewayId": {
-                          "Ref": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
                       "version": "2.8.0"
                     }
                   }
@@ -281,17 +241,17 @@
                   "version": "2.8.0"
                 }
               },
-              "dmzSubnet1": {
-                "id": "dmzSubnet1",
-                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1",
+              "PublicSubnet1": {
+                "id": "PublicSubnet1",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
-                        "cidrBlock": "10.3.2.0/24",
+                        "cidrBlock": "10.10.2.0/24",
                         "vpcId": {
                           "Ref": "DocDbVpc838DFB07"
                         },
@@ -307,7 +267,7 @@
                         "tags": [
                           {
                             "key": "aws-cdk:subnet-name",
-                            "value": "dmz"
+                            "value": "Public"
                           },
                           {
                             "key": "aws-cdk:subnet-type",
@@ -315,7 +275,7 @@
                           },
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1"
                           }
                         ]
                       }
@@ -327,7 +287,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/Acl",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.Resource",
                       "version": "2.8.0"
@@ -335,7 +295,7 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
@@ -345,7 +305,7 @@
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1"
                           }
                         ]
                       }
@@ -357,15 +317,15 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+                          "Ref": "DocDbVpcPublicSubnet1RouteTableB7E4BF00"
                         },
                         "subnetId": {
-                          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+                          "Ref": "DocDbVpcPublicSubnet1SubnetE5A9C787"
                         }
                       }
                     },
@@ -376,12 +336,12 @@
                   },
                   "DefaultRoute": {
                     "id": "DefaultRoute",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/DefaultRoute",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/DefaultRoute",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Route",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+                          "Ref": "DocDbVpcPublicSubnet1RouteTableB7E4BF00"
                         },
                         "destinationCidrBlock": "0.0.0.0/0",
                         "gatewayId": {
@@ -393,54 +353,6 @@
                       "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
                       "version": "2.8.0"
                     }
-                  },
-                  "EIP": {
-                    "id": "EIP",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/EIP",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
-                      "aws:cdk:cloudformation:props": {
-                        "domain": "vpc",
-                        "tags": [
-                          {
-                            "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
-                          }
-                        ]
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_ec2.CfnEIP",
-                      "version": "2.8.0"
-                    }
-                  },
-                  "NATGateway": {
-                    "id": "NATGateway",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/NATGateway",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
-                      "aws:cdk:cloudformation:props": {
-                        "subnetId": {
-                          "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
-                        },
-                        "allocationId": {
-                          "Fn::GetAtt": [
-                            "DocDbVpcdmzSubnet1EIP2E95BC63",
-                            "AllocationId"
-                          ]
-                        },
-                        "tags": [
-                          {
-                            "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1"
-                          }
-                        ]
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_ec2.CfnNatGateway",
-                      "version": "2.8.0"
-                    }
                   }
                 },
                 "constructInfo": {
@@ -448,17 +360,17 @@
                   "version": "2.8.0"
                 }
               },
-              "dmzSubnet2": {
-                "id": "dmzSubnet2",
-                "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2",
+              "PublicSubnet2": {
+                "id": "PublicSubnet2",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2",
                 "children": {
                   "Subnet": {
                     "id": "Subnet",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Subnet",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/Subnet",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
                       "aws:cdk:cloudformation:props": {
-                        "cidrBlock": "10.3.3.0/24",
+                        "cidrBlock": "10.10.3.0/24",
                         "vpcId": {
                           "Ref": "DocDbVpc838DFB07"
                         },
@@ -474,7 +386,7 @@
                         "tags": [
                           {
                             "key": "aws-cdk:subnet-name",
-                            "value": "dmz"
+                            "value": "Public"
                           },
                           {
                             "key": "aws-cdk:subnet-type",
@@ -482,7 +394,7 @@
                           },
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2"
                           }
                         ]
                       }
@@ -494,7 +406,7 @@
                   },
                   "Acl": {
                     "id": "Acl",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Acl",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/Acl",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.Resource",
                       "version": "2.8.0"
@@ -502,7 +414,7 @@
                   },
                   "RouteTable": {
                     "id": "RouteTable",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTable",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/RouteTable",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
                       "aws:cdk:cloudformation:props": {
@@ -512,7 +424,7 @@
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2"
+                            "value": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2"
                           }
                         ]
                       }
@@ -524,15 +436,15 @@
                   },
                   "RouteTableAssociation": {
                     "id": "RouteTableAssociation",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTableAssociation",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/RouteTableAssociation",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+                          "Ref": "DocDbVpcPublicSubnet2RouteTable92CE24DB"
                         },
                         "subnetId": {
-                          "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+                          "Ref": "DocDbVpcPublicSubnet2Subnet64B4B0B1"
                         }
                       }
                     },
@@ -543,12 +455,12 @@
                   },
                   "DefaultRoute": {
                     "id": "DefaultRoute",
-                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/DefaultRoute",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/DefaultRoute",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::Route",
                       "aws:cdk:cloudformation:props": {
                         "routeTableId": {
-                          "Ref": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
+                          "Ref": "DocDbVpcPublicSubnet2RouteTable92CE24DB"
                         },
                         "destinationCidrBlock": "0.0.0.0/0",
                         "gatewayId": {
@@ -604,10 +516,149 @@
                   "fqn": "aws-cdk-lib.aws_ec2.CfnVPCGatewayAttachment",
                   "version": "2.8.0"
                 }
+              },
+              "sm-endpoint": {
+                "id": "sm-endpoint",
+                "path": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": {
+                                  "Fn::GetAtt": [
+                                    "DocDbVpc838DFB07",
+                                    "CidrBlock"
+                                  ]
+                                },
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "from ",
+                                      {
+                                        "Fn::GetAtt": [
+                                          "DocDbVpc838DFB07",
+                                          "CidrBlock"
+                                        ]
+                                      },
+                                      ":443"
+                                    ]
+                                  ]
+                                }
+                              },
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "Cdkv2ApiDocdbStack/DocDbVpc"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "DocDbVpc838DFB07"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                          "version": "2.8.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                      "version": "2.8.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".secretsmanager"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "DocDbVpc838DFB07"
+                        },
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "DocDbVpcsmendpointSecurityGroup17380F7D",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          {
+                            "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
+                          },
+                          {
+                            "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
+                          }
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnVPCEndpoint",
+                      "version": "2.8.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.InterfaceVpcEndpoint",
+                  "version": "2.8.0"
+                }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_ec2.Vpc",
+              "version": "2.8.0"
+            }
+          },
+          "SMEndpoint": {
+            "id": "SMEndpoint",
+            "path": "Cdkv2ApiDocdbStack/SMEndpoint",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.8.0"
             }
           },
@@ -624,10 +675,10 @@
                     "dbSubnetGroupDescription": "Subnets for docdbDatabaseTest database",
                     "subnetIds": [
                       {
-                        "Ref": "DocDbVpcdmzSubnet1Subnet51657834"
+                        "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
                       },
                       {
-                        "Ref": "DocDbVpcdmzSubnet2SubnetDF5353C9"
+                        "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
                       }
                     ]
                   }
@@ -673,7 +724,7 @@
                       "aws:cdk:cloudformation:props": {
                         "ipProtocol": "tcp",
                         "cidrIp": "0.0.0.0/0",
-                        "description": "too open for now",
+                        "description": "from 0.0.0.0/0:{IndirectPort}",
                         "fromPort": {
                           "Fn::GetAtt": [
                             "docdbDatabaseTestB8EFCB97",
@@ -730,9 +781,9 @@
                           "passwordLength": 41,
                           "secretStringTemplate": "{\"username\":\"myuser\"}",
                           "generateStringKey": "password",
-                          "excludeCharacters": "\"@/:"
+                          "excludeCharacters": "\"@/:#$;,>+~)-.'"
                         },
-                        "name": "/myapp/mydocdb/masteruser"
+                        "name": "apiCrudDocDbSecret"
                       }
                     },
                     "constructInfo": {
@@ -1089,7 +1140,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "12a1db1eec700e5baa98da5977e213668b454bfc4df69fdc854c0e10d495c229.zip"
+                      "s3Key": "0f65dc926fad2a51bef70647c9b507ef71f116a27ac27e2dd95ffdd6f5a2f214.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1100,7 +1151,7 @@
                     "environment": {
                       "variables": {
                         "HOME": "/tmp",
-                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "SECRETNAME": "apiCrudDocDbSecret",
                         "REGION": "us-west-2"
                       }
                     },
@@ -1115,10 +1166,10 @@
                     "vpcConfig": {
                       "subnetIds": [
                         {
-                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
                         },
                         {
-                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
                         }
                       ],
                       "securityGroupIds": [
@@ -1238,7 +1289,7 @@
                     "environment": {
                       "variables": {
                         "HOME": "/tmp",
-                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "SECRETNAME": "apiCrudDocDbSecret",
                         "REGION": "us-west-2"
                       }
                     },
@@ -1253,10 +1304,10 @@
                     "vpcConfig": {
                       "subnetIds": [
                         {
-                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
                         },
                         {
-                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
                         }
                       ],
                       "securityGroupIds": [
@@ -1376,7 +1427,7 @@
                     "environment": {
                       "variables": {
                         "HOME": "/tmp",
-                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "SECRETNAME": "apiCrudDocDbSecret",
                         "REGION": "us-west-2"
                       }
                     },
@@ -1391,10 +1442,10 @@
                     "vpcConfig": {
                       "subnetIds": [
                         {
-                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
                         },
                         {
-                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
                         }
                       ],
                       "securityGroupIds": [
@@ -1514,7 +1565,7 @@
                     "environment": {
                       "variables": {
                         "HOME": "/tmp",
-                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "SECRETNAME": "apiCrudDocDbSecret",
                         "REGION": "us-west-2"
                       }
                     },
@@ -1529,10 +1580,10 @@
                     "vpcConfig": {
                       "subnetIds": [
                         {
-                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
                         },
                         {
-                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
                         }
                       ],
                       "securityGroupIds": [
@@ -1652,7 +1703,7 @@
                     "environment": {
                       "variables": {
                         "HOME": "/tmp",
-                        "SECRETNAME": "/myapp/mydocdb/masteruser",
+                        "SECRETNAME": "apiCrudDocDbSecret",
                         "REGION": "us-west-2"
                       }
                     },
@@ -1667,10 +1718,10 @@
                     "vpcConfig": {
                       "subnetIds": [
                         {
-                          "Ref": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
                         },
                         {
-                          "Ref": "DocDbVpcdbSubnet2Subnet9F482FAD"
+                          "Ref": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
                         }
                       ],
                       "securityGroupIds": [

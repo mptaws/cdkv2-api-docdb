@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "bb98e540-6176-4bb5-8e14-3584763d0063",
+		"name": "APICrud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateOne",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    student_id: \"10011\", \n    type: \"test\", \n    score: \"87.34342987\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{apiUrl}}/prod/api",
+					"protocol": "https",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"prod",
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{apiUrl}}/prod/api",
+					"protocol": "https",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"prod",
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{apiUrl}}/prod/api/10001",
+					"protocol": "https",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"prod",
+						"api",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateOne",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    student_id: \"10002\", \n    type: \"exam\", \n    score: \"87.34342987\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{apiUrl}}/prod/api/10002",
+					"protocol": "https",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"prod",
+						"api",
+						"10002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteOne",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{apiUrl}}/prod/api/10001",
+					"protocol": "https",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"prod",
+						"api",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUrl",
+			"value": "VALUE FROM CDK AFTER RUN",
+			"type": "string"
+		}
+	]
+}

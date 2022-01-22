@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1e0674af8d8efa69a27206c9a8037e19761b29651f4ac55ad247d32b95f3d29e.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0614092ef768c4bca70dbaafcec326fd9bb64abe104e3b60b20d3adb3affba7d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -45,112 +45,88 @@
             "data": "DocDbVpc838DFB07"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/Subnet": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/Subnet": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet1Subnet4FBF3E63"
+            "data": "DocDbVpcPrivateIsolatedSubnet1Subnet0E320F86"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTable": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/RouteTable": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet1RouteTable90C5B944"
+            "data": "DocDbVpcPrivateIsolatedSubnet1RouteTableD6B5B9D8"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/RouteTableAssociation": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet1/RouteTableAssociation": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet1RouteTableAssociation9B33F1DF"
+            "data": "DocDbVpcPrivateIsolatedSubnet1RouteTableAssociation8341EBEA"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet1/DefaultRoute": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/Subnet": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet1DefaultRoute23891593"
+            "data": "DocDbVpcPrivateIsolatedSubnet2SubnetEBE0F8F0"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/Subnet": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/RouteTable": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet2Subnet9F482FAD"
+            "data": "DocDbVpcPrivateIsolatedSubnet2RouteTableD18E3B18"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTable": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/Private-IsolatedSubnet2/RouteTableAssociation": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet2RouteTable97608A44"
+            "data": "DocDbVpcPrivateIsolatedSubnet2RouteTableAssociation81B31669"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/RouteTableAssociation": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/Subnet": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet2RouteTableAssociationC7DAEC62"
+            "data": "DocDbVpcPublicSubnet1SubnetE5A9C787"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dbSubnet2/DefaultRoute": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/RouteTable": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdbSubnet2DefaultRoute989C67C6"
+            "data": "DocDbVpcPublicSubnet1RouteTableB7E4BF00"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/Subnet": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/RouteTableAssociation": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet1Subnet51657834"
+            "data": "DocDbVpcPublicSubnet1RouteTableAssociation0CCE48D6"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTable": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet1/DefaultRoute": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet1RouteTableF95FC829"
+            "data": "DocDbVpcPublicSubnet1DefaultRoute98FB8AA5"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/RouteTableAssociation": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/Subnet": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet1RouteTableAssociationC7C9E77E"
+            "data": "DocDbVpcPublicSubnet2Subnet64B4B0B1"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/DefaultRoute": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/RouteTable": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet1DefaultRoute16DA0ECA"
+            "data": "DocDbVpcPublicSubnet2RouteTable92CE24DB"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/EIP": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/RouteTableAssociation": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet1EIP2E95BC63"
+            "data": "DocDbVpcPublicSubnet2RouteTableAssociationF7B2590F"
           }
         ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet1/NATGateway": [
+        "/Cdkv2ApiDocdbStack/DocDbVpc/PublicSubnet2/DefaultRoute": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet1NATGateway1D2CC063"
-          }
-        ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/Subnet": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet2SubnetDF5353C9"
-          }
-        ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTable": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet2RouteTableC4E1D0A1"
-          }
-        ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/RouteTableAssociation": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet2RouteTableAssociation29D71FFE"
-          }
-        ],
-        "/Cdkv2ApiDocdbStack/DocDbVpc/dmzSubnet2/DefaultRoute": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "DocDbVpcdmzSubnet2DefaultRouteF750075F"
+            "data": "DocDbVpcPublicSubnet2DefaultRoute8FA04A20"
           }
         ],
         "/Cdkv2ApiDocdbStack/DocDbVpc/IGW": [
@@ -163,6 +139,24 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "DocDbVpcVPCGW09B5DD58"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcsmendpointSecurityGroup17380F7D"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/DocDbVpc/sm-endpoint/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DocDbVpcsmendpoint72E4329B"
+          }
+        ],
+        "/Cdkv2ApiDocdbStack/SMEndpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SMEndpoint"
           }
         ],
         "/Cdkv2ApiDocdbStack/docdbDatabaseTest/Subnets": [
